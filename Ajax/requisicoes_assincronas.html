@@ -10,12 +10,27 @@
 	    <script>
 
             function requisitarPagina(url){
+                // Explicando a fases do estado de uma requisição:
+
                 let ajax = new XMLHttpRequest();
 
+                //requisição não iniciada, state = 0
+                console.log(ajax.readyState)
+
+                // conexão estabelecida com servidor 
                 ajax.open('GET', url);
+                console.log(ajax.readyState)
+                // As mudanças a seguir são feitas pelo servidor
+
+                // O atributo onreadystatechange recebe uma função que é executada sempre que acontece uma mudança de estado na requisição, no caso vamos fazer com que um console log seja executado quando houver mudança de estado
+                ajax.onreadystatechange = () => {
+                    console.log(ajax.readyState)
+                }
+
+
                 ajax.send();
 
-                console.log(ajax);
+                //console.log(ajax);
             }
             
         </script>
