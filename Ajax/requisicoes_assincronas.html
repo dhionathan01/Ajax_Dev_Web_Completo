@@ -10,8 +10,15 @@
 	    <script>
 
             function requisitarPagina(url){
-                // Explicando a fases do estado de uma requisição:
+                // incluir um gif de loading na pagina
+                let imagemLoading = document.createElement('img')
+                imagemLoading.src = 'loading.gif';
+                imagemLoading.className = 'rounded mx-auto d-block';
+                
+                // Adicionando o elemento a tela:
+                document.getElementById('conteudo').appendChild(imagemLoading) // Adicionando conteudo dentro da tag com id conteudo
 
+                // Explicando a fases do estado de uma requisição:
                 let ajax = new XMLHttpRequest();
 
                 //requisição não iniciada, state = 0
@@ -63,7 +70,7 @@
 	    	<div class="row">
 		    	<div class="col-md-1"></div>
 
-		    	<div class="col-md-10">
+		    	<div class="col-md-10" id="conteudo">
 		    		
 		    	</div>
 		    		
