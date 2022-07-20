@@ -10,7 +10,7 @@
 	    <script>
 
             function requisitarPagina(url){
-				document.getElementById('conteudo') = '' // Removendo qualquer nó filho
+				document.getElementById('conteudo').innerHTML = '' // Removendo qualquer nó filho
 
                 // Se não existir uma imagem de loading na tela faça
                 if(!document.getElementById('loading')){
