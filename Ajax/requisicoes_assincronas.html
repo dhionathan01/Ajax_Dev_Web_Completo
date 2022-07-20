@@ -34,15 +34,25 @@
                 // conexão estabelecida com servidor 
                 ajax.open('GET', url);
                 //console.log(ajax.readyState)
-
+				document.getElementById('conteudo') = ''; // Removendo qualquer nó filho
                 // As mudanças a seguir são feitas pelo servidor
 
                 // O atributo onreadystatechange recebe uma função que é executada sempre que acontece uma mudança de estado na requisição, no caso vamos fazer com que um console log seja executado quando houver mudança de estado
                 ajax.onreadystatechange = () => {
-                    if(ajax.readyState == 4){// Quando a requisição for finalizada exiba o console log e remova  imagem 
-                        console.log('Requisição finalizada com sucesso')
-                        document.getElementById('loading').remove()
+
+					// Se a conexão for finalizada(readyState == 4) e tiver tido uma resposta bem sucedida (status == 200), execute:
+                    if(ajax.readyState == 4 && ajax.status == 200 ){// Quando a requisição for finalizada exiba o console log e remova  imagem 
+						
+						console.log('O status da requisição é: ' + ajax.status); // Recuperando status da conexão
+						document.getElementById('conteudo').innerHTML = 'Requisição finalizada com sucesso status é: ' + ajax.status; 
+                        console.log('Requisição finalizada com sucesso status é: ' + + ajax.status);
+                        //document.getElementById('loading').remove();// Como inner substitui todo o conteudo, não é necessario o uso do remove
                     }
+					if(ajax.readyState == 4 && ajax.status == 404 ){
+						document.getElementById('conteudo').innerHTML = 'Requisição finalizada, porém o recurso solicitado não foi encontrado, o status é: ' + + ajax.status
+						console.log('Requisição finalizada, porém o recurso solicitado não foi encontrado, o status é: ' + + ajax.status)
+						//document.getElementById('loading').remove();
+					}
                 }
 
 
