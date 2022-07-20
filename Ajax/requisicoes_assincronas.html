@@ -10,28 +10,38 @@
 	    <script>
 
             function requisitarPagina(url){
+                // Se não existir uma imagem de loading na tela faça
+                if(!document.getElementById('loading')){
+                
                 // incluir um gif de loading na pagina
-                let imagemLoading = document.createElement('img')
+                let imagemLoading = document.createElement('img');
+                imagemLoading.id = 'loading';
                 imagemLoading.src = 'loading.gif';
                 imagemLoading.className = 'rounded mx-auto d-block';
                 
                 // Adicionando o elemento a tela:
                 document.getElementById('conteudo').appendChild(imagemLoading) // Adicionando conteudo dentro da tag com id conteudo
 
+                }
+
+                
                 // Explicando a fases do estado de uma requisição:
                 let ajax = new XMLHttpRequest();
 
                 //requisição não iniciada, state = 0
-                console.log(ajax.readyState)
+                //console.log(ajax.readyState)
 
                 // conexão estabelecida com servidor 
                 ajax.open('GET', url);
-                console.log(ajax.readyState)
+                //console.log(ajax.readyState)
+
                 // As mudanças a seguir são feitas pelo servidor
 
                 // O atributo onreadystatechange recebe uma função que é executada sempre que acontece uma mudança de estado na requisição, no caso vamos fazer com que um console log seja executado quando houver mudança de estado
                 ajax.onreadystatechange = () => {
-                    console.log(ajax.readyState)
+                    if(ajax.readyState == 4){// Quando a requisição for finalizada faça: 
+                        console.log('Requisição finalizada com sucesso')
+                    }
                 }
 
 
@@ -60,7 +70,7 @@
 	    	<div class="row mb-2">
 	    		<div class="col-md-4 center"></div>
 	    		<div class="col-md-4 center">
-	    			<a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_1_conteudo.html')">Página 1</a>
+	    			<a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_1_conteudo.php')">Página 1</a>
 	    			<a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_2_conteudo.html')">Página 2</a>
 	    			<a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_3_conteudo.html')">Página 3</a>
 	    		</div>
