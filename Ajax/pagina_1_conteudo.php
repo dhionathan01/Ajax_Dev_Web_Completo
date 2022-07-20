@@ -1,5 +1,5 @@
 <?php 
-		for($i = 0; $i< 500000000; $i++){} // Simulando um atraso para requisição
+		for($i = 0; $i< 5000000; $i++){} // Simulando um atraso para requisição
 ?>
 <div class="panel panel-default">
 	<div class="panel-body">

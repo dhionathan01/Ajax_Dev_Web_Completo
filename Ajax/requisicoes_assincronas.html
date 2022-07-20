@@ -29,7 +29,7 @@
                 
                 // Explicando a fases do estado de uma requisição:
                 let ajax = new XMLHttpRequest();
-
+				console.log(ajax)
 
                 //requisição não iniciada, state = 0
                 //console.log(ajax.readyState)
@@ -47,12 +47,12 @@
                     if(ajax.readyState == 4 && ajax.status == 200 ){// Quando a requisição for finalizada exiba o console log e remova  imagem 
 						
 						console.log('O status da requisição é: ' + ajax.status); // Recuperando status da conexão
-						document.getElementById('conteudo').innerHTML = 'Requisição finalizada com sucesso status é: ' + ajax.status; 
+						document.getElementById('conteudo').innerHTML = ajax.responseText; 
                         console.log('Requisição finalizada com sucesso status é: ' + + ajax.status);
                         //document.getElementById('loading').remove();// Como inner substitui todo o conteudo, não é necessario o uso do remove
                     }
 					if(ajax.readyState == 4 && ajax.status == 404 ){
-						document.getElementById('conteudo').innerHTML = 'Requisição finalizada, porém o recurso solicitado não foi encontrado, o status é: ' + + ajax.status
+						document.getElementById('conteudo').innerHTML = 'Tente novamente mais tarde';
 						console.log('Requisição finalizada, porém o recurso solicitado não foi encontrado, o status é: ' + + ajax.status)
 						//document.getElementById('loading').remove();
 					}
