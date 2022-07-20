@@ -39,8 +39,9 @@
 
                 // O atributo onreadystatechange recebe uma função que é executada sempre que acontece uma mudança de estado na requisição, no caso vamos fazer com que um console log seja executado quando houver mudança de estado
                 ajax.onreadystatechange = () => {
-                    if(ajax.readyState == 4){// Quando a requisição for finalizada faça: 
+                    if(ajax.readyState == 4){// Quando a requisição for finalizada exiba o console log e remova  imagem 
                         console.log('Requisição finalizada com sucesso')
+                        document.getElementById('loading').remove()
                     }
                 }
 
